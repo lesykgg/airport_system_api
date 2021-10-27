@@ -9,6 +9,10 @@ gem 'pg', '>= 0.18', '< 2.0'
 
 gem 'puma', '~> 4.1'
 
+gem 'rails_admin'
+gem 'devise'
+gem 'devise-jwt'
+
 gem 'bootsnap', '>= 1.4.2', require: false
 
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
@@ -20,10 +24,12 @@ group :development, :test do
 end
 
 group :development do
+  gem 'pry'
   gem 'listen', '~> 3.2'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+  gem 'dotenv-rails'
 end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
