@@ -25,6 +25,8 @@ class BaseQuery
     params.each_pair do |filter, value|
       next unless self.class::ALLOWED_FILTERS.include?(filter.to_sym)
 
+      next scope = send("by_#{filter}", scope, value) if respond_to?("by_#{filter}")
+
       scope = scope.where(filter => value)
     end
 

@@ -18,7 +18,7 @@ describe FlightsQuery do
   end
 
   context 'valid filters' do
-    let!(:flight1) { FactoryBot.create(:flight, from: 'Kyiv', destination: 'Munich') }
+    let!(:flight1) { FactoryBot.create(:flight, from: 'Kyiv', destination: 'Munich', arrival: Time.new(2021, 11, 23, 12)) }
     let!(:flight2) { FactoryBot.create(:flight, from: 'Lviv', destination: 'Munich') }
     let!(:flight3) { FactoryBot.create(:flight, from: 'Lutsk', destination: 'Munich') }
     let!(:flight4) { FactoryBot.create(:flight, from: 'Lviv', destination: 'Warsaw') }
@@ -44,6 +44,14 @@ describe FlightsQuery do
 
       it 'applies filters' do
         expect(described_class.new(filters).call).to be_empty
+      end
+    end
+
+    context 'search by arrival' do
+      let(:filters) { { arrival: '2021-11-23' } }
+
+      it 'applies filter' do
+        expect(described_class.new(filters).call).to contain_exactly(flight1)
       end
     end
   end
