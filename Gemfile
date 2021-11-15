@@ -17,6 +17,8 @@ gem 'bootsnap', '>= 1.4.2', require: false
 
 gem 'rack-cors'
 
+gem 'money-rails'
+
 gem 'faker'
 gem 'factory_bot_rails'
 

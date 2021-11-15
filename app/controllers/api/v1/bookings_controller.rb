@@ -40,7 +40,7 @@ module API
       end
 
       def booking_params
-        params.require(:booking).permit(:user_id, :flight_id)
+        params.require(:booking).permit(:user_id, :flight_id, :seat_number)
       end
     end
   end
